@@ -6,7 +6,7 @@ def plot_from_d(data: pl.DataFrame, plot_d: dict, ax, **kwargs):
     if plot_d["chart_type"] == "bar":
         ax.bar(x=plot_d["x_data"], height=plot_d["y_data"], data=data, **kwargs)
     elif plot_d["chart_type"] == "line":
-        ax.plot(x=plot_d["x_data"], y=plot_d["y_data"], data=data, **kwargs)
+        ax.plot(plot_d["x_data"], plot_d["y_data"], data=data, **kwargs)
     elif plot_d["chart_type"] == "scatter":
         ax.scatter(x=plot_d["x_data"], y=plot_d["y_data"], data=data, **kwargs)
     elif plot_d["chart_type"] == "diff":
