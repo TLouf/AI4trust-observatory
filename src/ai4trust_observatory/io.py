@@ -13,7 +13,7 @@ def _json_default(value):
 
 
 def save_dict(d, path):
-    path.write_text(json.dumps(d, default=_json_default), indent=4)
+    path.write_text(json.dumps(d, default=_json_default, indent=4))
 
 
 def load_dict(path):
