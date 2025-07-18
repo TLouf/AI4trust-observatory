@@ -15,9 +15,10 @@ def plot_from_d(data: pl.DataFrame, plot_d: dict, ax, **kwargs):
             pl.col(plot_d["pos_y_data"]).alias("pos_y_data"),
             -pl.col(plot_d["neg_y_data"]).alias("neg_y_data"),
         ).with_columns(diff=pl.col("pos_y_data") + pl.col("neg_y_data"))
-        ax.bar(x="x_data", height="pos_y_data", data=plot_data, fc="seagreen", **kwargs)
-        ax.bar(x="x_data", height="neg_y_data", data=plot_data, fc="indianred", **kwargs)
-        ax.plot("x_data", "diff", data=plot_data, c="k", ls='--', **kwargs)
+        ax.bar(x="x_data", height="pos_y_data", data=plot_data, fc="seagreen", label='reliable', **kwargs)
+        ax.bar(x="x_data", height="neg_y_data", data=plot_data, fc="indianred",label='unreliable',  **kwargs)
+        ax.plot("x_data", "diff", data=plot_data, c="k", ls='--',label='difference', **kwargs)
+        ax.legend()
         yticks = ax.get_yticks()
         ax.set_yticks(yticks, [int(abs(tick)) for tick in yticks])
     ax.set_xlabel(plot_d.get("xlabel"))
